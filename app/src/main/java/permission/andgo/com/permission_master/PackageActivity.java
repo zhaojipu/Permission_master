@@ -1,6 +1,7 @@
 package permission.andgo.com.permission_master;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,7 +50,7 @@ public class PackageActivity extends BaseActivity implements View.OnClickListene
                 }
                 break;
             case R.id.btn_toPackageActivity:
-                this.finish();
+                this.startActivity(new Intent(this,GenActivity.class));
                 break;
         }
     }
