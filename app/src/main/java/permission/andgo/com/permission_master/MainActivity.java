@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import static permission.andgo.com.permission_master.Contants.PERMISSION_CALL_PHONR;
+import static permission.andgo.com.permission_master.Contants.PERMISSION_CAMRRA;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private static final int PERMISSION_CALL_PHONR=0;
-    private static final int PERMISSION_CAMRRA=1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //2、未开启则需要开启
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.CALL_PHONE},
-                            PERMISSION_CALL_PHONR);
+                            Contants.PERMISSION_CALL_PHONR);
                 }else{
                     //3、需要开启则直接拨打电话
                     callPhone();
@@ -58,12 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         !=PackageManager.PERMISSION_GRANTED){
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.CAMERA},
-                            PERMISSION_CAMRRA);
+                            Contants.PERMISSION_CAMRRA);
                 }else{
                     useCamera();
                 }
                 break;
             case R.id.btn_toPackageActivity:
+                startActivity(new Intent(this,PackageActivity.class));
                 break;
         }
     }
